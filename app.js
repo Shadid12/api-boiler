@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 
 const productRoutes = require('./api/routes/products');
@@ -9,8 +10,12 @@ const productRoutes = require('./api/routes/products');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// CORS
+// DB Setup
+mongoose.connect('mongodb://shadid:shadid@ds253468.mlab.com:53468/auth', () => {
+	console.log('DB Connected');
+});
 
+// CORS
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
