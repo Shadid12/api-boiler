@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 
 const productRoutes = require('./api/routes/products');
+const userRoutes = require('./api/routes/user');
 
 // body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,5 +32,6 @@ app.use((req, res, next) => {
 
 
 app.use('/products', productRoutes);
+app.use("/user", userRoutes);
 
 module.exports = app;
